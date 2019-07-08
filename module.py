@@ -1,1 +1,70 @@
-#Nadaljni test
+STOLPCI = 7
+VRSTICE = 6
+PRAZNO = 0
+IG = 1
+RAC = -1
+VEKTORJI = {(0, 1), (1, 1), (1, 0), (1, -1)} # Y SMER JE RAVNO OBRATNA
+
+
+class Igra:
+
+    def __init__(self, igralec=IG):
+        self.igralec = igralec
+        self.tabela = [[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)]
+
+    def potencjali_dve_potezi(self):
+        test_tabela = self.tabela
+        potencjali = []
+        for stolpec1 in range(STOLPCI):
+            for vrstica1 in range(VRSTICE - 1, -1, -1):
+                if test_tabela[vrstica1][stolpec1] == PRAZNO:
+                    test_tabela[vrstica1][stolpec1] = RAC
+                    break
+                for stolpec2 in range(STOLPCI):
+                    for vrstica1 in range(VRSTICE - 1, -1, -1):
+                        if test_tabela[vrstica1][stolpec2] == PRAZNO:
+                            test_tabela[vrstica1][stolpec2] = IG
+                            break
+                    potencjali.append(potencjal(test_tabela), stolpec1, stolpec2)
+        return potencjali
+
+    def poteza_racunalnik(self):
+        potencjali = self.potencjali_dve_potezi()
+        potencjali.sort(key=lambda x: x[0], reverse=True)
+        stolpec = potencjali[0][1]
+        for vrstica in range(VRSTICE - 1, -1, -1):
+            if self.tabela[vrstica][stolpec] == PRAZNO:
+                self.tabela[vrstica][stolpec] = RAC
+                break
+
+    def poteza(self, stolpec):
+        if self.igralec == RAC:
+            self.tabela[5][3] = RAC
+            self.igralec = IG
+        for vrstica in range(VRSTICE - 1, -1, -1):
+            if self.tabela[vrstica][stolpec] == PRAZNO:
+                self.tabela[vrstica][stolpec] = IG
+                break
+        self.poteza_racunalnik()
+        # CE NAREDIS NEMOGOCO POTEZO VRNE ERROR ALI PA SE NE ZGODI NIC.
+
+
+def tri_okolica(tabela, stolpec, vrstica):
+    baza = tabela[vrstica][stolpec]
+    if not baza == PRAZNO:
+        vsota = 0
+        for vektor in VEKTORJI:
+            x, y = vektor
+            if vrstica + 2 * y < VRSTICE and stolpec + 2 * x < STOLPCI:
+                if baza == tabela[vrstica + y][stolpec + x] == tabela[vrstica + 2 * y][stolpec + 2 * x]:
+                    vsota += 1
+        return baza * vsota
+    else:
+        return PRAZNO
+
+def potencjal(tabela):
+    potencjal = 0
+    for vrstica in range(VRSTICE):
+        for stolpec in range(STOLPCI):
+            potencjal += tri_okolica(tabela, stolpec, vrstica)
+    return potencjal
