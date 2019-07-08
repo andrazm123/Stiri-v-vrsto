@@ -25,7 +25,7 @@ class Igra:
                         if test_tabela[vrstica1][stolpec2] == PRAZNO:
                             test_tabela[vrstica1][stolpec2] = IG
                             break
-                    potencjali.append(potencjal(test_tabela), stolpec1, stolpec2)
+                    potencjali.append((potencjal(test_tabela), stolpec1, stolpec2))
         return potencjali
 
     def poteza_racunalnik(self):
@@ -68,3 +68,13 @@ def potencjal(tabela):
         for stolpec in range(STOLPCI):
             potencjal += tri_okolica(tabela, stolpec, vrstica)
     return potencjal
+
+
+ig = Igra()
+print(ig.tabela)
+ig.poteza(2)
+print(ig.tabela)
+ig.poteza(3)
+print(ig.tabela)
+ig.poteza(4)
+print(ig.tabela)
