@@ -1,3 +1,5 @@
+import copy
+
 STOLPCI = 7
 VRSTICE = 6
 PRAZNO = 0
@@ -12,24 +14,24 @@ class Igra:
         self.igralec = igralec
         self.tabela = [[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)]
 
-    def potencjali_dve_potezi(self):
-        test_tabela = self.tabela
+    def potencjali_dve_potezi(self):      
         potencjali = []
         for stolpec1 in range(STOLPCI):
+            test_tabela = copy.deepcopy(self.tabela)
             for vrstica1 in range(VRSTICE - 1, -1, -1):
                 if test_tabela[vrstica1][stolpec1] == PRAZNO:
                     test_tabela[vrstica1][stolpec1] = RAC
                     break
-                for stolpec2 in range(STOLPCI):
-                    for vrstica1 in range(VRSTICE - 1, -1, -1):
-                        if test_tabela[vrstica1][stolpec2] == PRAZNO:
-                            test_tabela[vrstica1][stolpec2] = IG
-                            break
-                    potencjali.append((potencjal(test_tabela), stolpec1, stolpec2))
+            for stolpec2 in range(STOLPCI):
+                for vrstica2 in range(VRSTICE - 1, -1, -1):
+                    if test_tabela[vrstica2][stolpec2] == PRAZNO:
+                        test_tabela[vrstica2][stolpec2] = IG
+                        break
+                potencjali.append((potencjal(test_tabela), stolpec1, stolpec2))
         return potencjali
 
     def poteza_racunalnik(self):
-        potencjali = self.potencjali_dve_potezi()
+        potencjali = self.potencjali_dve_potezi()    
         potencjali.sort(key=lambda x: x[0], reverse=True)
         stolpec = potencjali[0][1]
         for vrstica in range(VRSTICE - 1, -1, -1):
@@ -48,7 +50,7 @@ class Igra:
         self.poteza_racunalnik()
         # CE NAREDIS NEMOGOCO POTEZO VRNE ERROR ALI PA SE NE ZGODI NIC.
 
-
+# OTEŽENO (+1, -1) PREŠTEJE ČE JE POLJE IZHODIŠČE ZA TRI V VRSTO.
 def tri_okolica(tabela, stolpec, vrstica):
     baza = tabela[vrstica][stolpec]
     if not baza == PRAZNO:
@@ -58,10 +60,14 @@ def tri_okolica(tabela, stolpec, vrstica):
             if vrstica + 2 * y < VRSTICE and stolpec + 2 * x < STOLPCI:
                 if baza == tabela[vrstica + y][stolpec + x] == tabela[vrstica + 2 * y][stolpec + 2 * x]:
                     vsota += 1
+        #if baza * vsota == 4:
+            #print(baza * vsota, tabela, stolpec, vrstica)
         return baza * vsota
     else:
+        #print(PRAZNO, "TEST"), dela
         return PRAZNO
 
+# VRNE OTEŽENO VSOTO POLJ IZ TRI_OKOLICA
 def potencjal(tabela):
     potencjal = 0
     for vrstica in range(VRSTICE):
@@ -74,7 +80,6 @@ ig = Igra()
 print(ig.tabela)
 ig.poteza(2)
 print(ig.tabela)
-ig.poteza(3)
-print(ig.tabela)
-ig.poteza(4)
+ig.poteza(2)
+ig.poteza(2)
 print(ig.tabela)
