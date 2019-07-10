@@ -38,7 +38,28 @@ class Igra:
             if self.tabela[vrstica][stolpec] == PRAZNO:
                 self.tabela[vrstica][stolpec] = RAC
                 break
-
+    
+    def stiri_okolica(self, vrstica, stolpec):
+        baza = self.tabela[vrstica][stolpec]
+        if not baza == PRAZNO:
+            for vektor in VEKTORJI:
+                x, y = vektor
+                if vrstica + 3 * y < VRSTICE and stolpec + 3 * x < STOLPCI:
+                    if baza == self.tabela[vrstica + y][stolpec + x] == self.tabela[vrstica + 2 * y][stolpec + 2 * x] ==self. tabela[vrstica + 3 * y][stolpec + 3 * x]:
+                        return baza
+            return PRAZNO
+        else:
+            return PRAZNO
+    
+    def zmaga(self):
+        for vrstica in range(VRSTICE):
+            for stolpec in range(STOLPCI):
+                if self.stiri_okolica(vrstica, stolpec) == IG:
+                    return IG
+                elif self.stiri_okolica(vrstica, stolpec) == RAC:
+                    return RAC
+        return PRAZNO
+    
     def poteza(self, stolpec):
         if self.igralec == RAC:
             self.tabela[5][3] = RAC
@@ -48,7 +69,11 @@ class Igra:
                 self.tabela[vrstica][stolpec] = IG
                 break
         self.poteza_racunalnik()
+        return self.zmaga()
         # CE NAREDIS NEMOGOCO POTEZO VRNE ERROR ALI PA SE NE ZGODI NIC.
+
+
+
 
 # OTEŽENO (+1, -1) PREŠTEJE ČE JE POLJE IZHODIŠČE ZA TRI V VRSTO.
 def tri_okolica(tabela, stolpec, vrstica):
@@ -75,8 +100,8 @@ def potencjal(tabela):
 
 ig = Igra()
 print(ig.tabela)
-ig.poteza(2)
+print(ig.poteza(2))
 print(ig.tabela)
-ig.poteza(2)
-ig.poteza(2)
+print(ig.poteza(2))
+print(ig.poteza(2))
 print(ig.tabela)

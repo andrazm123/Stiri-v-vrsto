@@ -1,22 +1,20 @@
 import model
+VRSTICE = 6
 
 def izpis_igre(igra):
-    tekst = (
-    '=======================================\n\n'
-    '{trenutno_stanje}'
-    'Poskusili ste ze: {poskusi}\n\n'
-    '========================================'
-    ).format(trenutno_stanje = igra.pravilni_del_gesla(), poskusi = igra.napacne_crke())
+    tekst = ""
+    for vrstica in range(VRSTICE):
+        tekst += "{vrstica}\n".format(igra.tabela[vrstica])
     return tekst
 
 def izpis_zmage(igra):
-    return "Zmagali ste, geslo je {}.".format(igra.geslo)
+    return "Zmagali ste"
 
 def izpis_poraza(igra):
-    return "Izgubili ste! Pravilno geslo je {}.".format(igra.geslo)
+    return "Izgubili ste!"
 
 def zahtevaj_vnos():
-    vnos = input("poskusi uganiti crko: ")
+    vnos = input("izberite stolpec: ")
     return vnos
 
 def preveri_vnos(vnos):
@@ -29,7 +27,7 @@ def preveri_vnos(vnos):
 
 # Izvajanje vmesnika
 def zazeni_vmesnik():
-    igra = model.nova_igra()
+    igra = model.Igra()
     while True:
         print(izpis_igre(igra))
         # ugiba
