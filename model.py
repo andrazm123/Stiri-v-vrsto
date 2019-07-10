@@ -60,11 +60,8 @@ def tri_okolica(tabela, stolpec, vrstica):
             if vrstica + 2 * y < VRSTICE and stolpec + 2 * x < STOLPCI:
                 if baza == tabela[vrstica + y][stolpec + x] == tabela[vrstica + 2 * y][stolpec + 2 * x]:
                     vsota += 1
-        #if baza * vsota == 4:
-            #print(baza * vsota, tabela, stolpec, vrstica)
         return baza * vsota
     else:
-        #print(PRAZNO, "TEST"), dela
         return PRAZNO
 
 # VRNE OTEŽENO VSOTO POLJ IZ TRI_OKOLICA
