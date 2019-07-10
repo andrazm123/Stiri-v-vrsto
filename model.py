@@ -1,4 +1,5 @@
 import copy
+import random
 
 STOLPCI = 7
 VRSTICE = 6
@@ -14,26 +15,29 @@ class Igra:
         self.igralec = igralec
         self.tabela = [[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)]
 
-    def potencjali_dve_potezi(self):      
+    def potencjali_dve_potezi(self):
         potencjali = []
         for stolpec1 in range(STOLPCI):
-            test_tabela = copy.deepcopy(self.tabela)
+            test_tabela1 = copy.deepcopy(self.tabela)
             for vrstica1 in range(VRSTICE - 1, -1, -1):
-                if test_tabela[vrstica1][stolpec1] == PRAZNO:
-                    test_tabela[vrstica1][stolpec1] = RAC
+                if test_tabela1[vrstica1][stolpec1] == PRAZNO:
+                    test_tabela1[vrstica1][stolpec1] = RAC
                     break
             for stolpec2 in range(STOLPCI):
+                test_tabela2 = copy.deepcopy(test_tabela1)
                 for vrstica2 in range(VRSTICE - 1, -1, -1):
-                    if test_tabela[vrstica2][stolpec2] == PRAZNO:
-                        test_tabela[vrstica2][stolpec2] = IG
+                    if test_tabela2[vrstica2][stolpec2] == PRAZNO:
+                        test_tabela2[vrstica2][stolpec2] = RAC
+                        potencjali.append((potencjal(test_tabela2), stolpec1, stolpec2))
                         break
-                potencjali.append((potencjal(test_tabela), stolpec1, stolpec2))
         return potencjali
 
     def poteza_racunalnik(self):
-        potencjali = self.potencjali_dve_potezi()    
-        potencjali.sort(key=lambda x: x[0], reverse=True)
-        stolpec = potencjali[0][1]
+        potencjali = self.potencjali_dve_potezi()
+        potencjali.sort(key=lambda x: x[0])
+        maxi = potencjali[0][0]
+        izbira = [pot[1] for pot in potencjali if pot[0] == maxi]
+        stolpec = random.choice(izbira)
         for vrstica in range(VRSTICE - 1, -1, -1):
             if self.tabela[vrstica][stolpec] == PRAZNO:
                 self.tabela[vrstica][stolpec] = RAC
@@ -81,10 +85,10 @@ def tri_okolica(tabela, stolpec, vrstica):
         vsota = 0
         for vektor in VEKTORJI:
             x, y = vektor
-            if vrstica + 2 * y < VRSTICE and stolpec + 2 * x < STOLPCI:
-                if baza == tabela[vrstica + y][stolpec + x] == tabela[vrstica + 2 * y][stolpec + 2 * x]:
+            if vrstica + 3 * y < VRSTICE and stolpec + 3 * x < STOLPCI:
+                if baza == tabela[vrstica + y][stolpec + x] == tabela[vrstica + 2 * y][stolpec + 2 * x] == tabela[vrstica + 3 * y][stolpec + 3 * x]:
                     vsota += 1
-        return baza * vsota
+        return baza * vsota     # Pomembno je da sta IG in RAC ravno 1 in -1.
     else:
         return PRAZNO
 
@@ -96,3 +100,8 @@ def potencjal(tabela):
             potencjal += tri_okolica(tabela, stolpec, vrstica)
     return potencjal
 
+ig = Igra()
+print(ig.poteza(0))
+print(ig.poteza(1))
+print(ig.poteza(2))
+print(ig.tabela)
