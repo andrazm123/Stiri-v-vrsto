@@ -69,7 +69,6 @@ class Igra:
                 self.tabela[vrstica][stolpec] = IG
                 break
         self.poteza_racunalnik()
-        return self.zmaga()
         # CE NAREDIS NEMOGOCO POTEZO VRNE ERROR ALI PA SE NE ZGODI NIC.
 
 
@@ -97,11 +96,3 @@ def potencjal(tabela):
             potencjal += tri_okolica(tabela, stolpec, vrstica)
     return potencjal
 
-
-ig = Igra()
-print(ig.tabela)
-print(ig.poteza(2))
-print(ig.tabela)
-print(ig.poteza(2))
-print(ig.poteza(2))
-print(ig.tabela)
