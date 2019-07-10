@@ -100,8 +100,8 @@ def potencjal(tabela):
             potencjal += tri_okolica(tabela, stolpec, vrstica)
     return potencjal
 
-ig = Igra()
-print(ig.poteza(0))
-print(ig.poteza(1))
-print(ig.poteza(2))
-print(ig.tabela)
+#ig = Igra()
+#print(ig.poteza(0))
+#print(ig.poteza(1))
+#print(ig.poteza(2))
+#print(ig.tabela)
