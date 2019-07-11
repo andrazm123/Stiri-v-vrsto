@@ -4,7 +4,7 @@ import random
 STOLPCI = 7
 VRSTICE = 6
 PRAZNO = 0
-IG = 1
+IG = 3
 RAC = -1
 VEKTORJI = {(0, 1), (1, 1), (1, 0), (1, -1)} # Y SMER JE RAVNO OBRATNA
 
@@ -101,7 +101,8 @@ def potencjal(tabela):
     return potencjal
 
 #ig = Igra()
-#print(ig.poteza(0))
-#print(ig.poteza(1))
+#print(ig.poteza(3))
 #print(ig.poteza(2))
+#print(ig.poteza(4))
+#print(ig.poteza(5))
 #print(ig.tabela)

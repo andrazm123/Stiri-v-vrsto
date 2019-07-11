@@ -1,6 +1,6 @@
 import model
 VRSTICE = 6
-IG = 1
+IG = 3
 RAC = -1 
 
 def izpis_igre(igra):
