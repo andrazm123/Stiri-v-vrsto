@@ -34,12 +34,11 @@ def zazeni_vmesnik():
         print(izpis_igre(igra))
         # ugiba
         poskus = zahtevaj_vnos()
-        igra.poteza(poskus)
-        # prverimo, ce je igre konec
-        if igra.zmaga() == RAC:
-            return print(izpis_poraza(igra))
-        elif igra.zmaga() == IG:
-            return print(izpis_zmage(igra))
-    return 
+        stanje = igra.poteza(poskus)
+        if stanje == RAC:
+            return print("Izgubili ste")
+        elif stanje == IG:
+            return print("Zmagali ste")
+        
 
 print(zazeni_vmesnik())

@@ -7,6 +7,7 @@ PRAZNO = 0
 IG = 3
 RAC = -1
 VEKTORJI = {(0, 1), (1, 1), (1, 0), (1, -1)} # Y SMER JE RAVNO OBRATNA
+ZAČETEK = "z"
 
 
 class Igra:
@@ -72,7 +73,11 @@ class Igra:
             if self.tabela[vrstica][stolpec] == PRAZNO:
                 self.tabela[vrstica][stolpec] = IG
                 break
-        self.poteza_racunalnik()
+        if self.zmaga() == IG:
+            return IG
+        else:
+            self.poteza_racunalnik()
+            return self.zmaga()
         # CE NAREDIS NEMOGOCO POTEZO VRNE ERROR ALI PA SE NE ZGODI NIC.
 
 
@@ -100,9 +105,36 @@ def potencjal(tabela):
             potencjal += tri_okolica(tabela, stolpec, vrstica)
     return potencjal
 
-#ig = Igra()
-#print(ig.poteza(3))
-#print(ig.poteza(2))
-#print(ig.poteza(4))
-#print(ig.poteza(5))
-#print(ig.tabela)
+def nova_igra():
+    return Igra()
+
+
+
+
+class Stiri_v_vrsto:
+
+    def __init__(self):
+        # V slovarju igre ima vsaka igra svoj celoštevilski id.
+        self.igre = {}
+
+    def prost_id_igre(self):
+        if self.igre == {}:
+            return 0
+        else:
+            # Preverimo za n+1 stevil izmed n iger
+            for i in range(len(self.igre) + 1):
+                if i not in self.igre.keys():
+                    return i
+    
+    def nova_igra(self):
+        # Naredi novo igro z naključnim geslom in shrani v slovar z novim ID, shrani (začetek, igra)
+        igra = nova_igra()
+        nov_id = self.prost_id_igre()
+        self.igre[nov_id] = (igra, ZAČETEK)
+        return nov_id
+
+    def poteza(self, id_igre, stolpec):
+        (igra, _) = self.igre[id_igre]
+        poteza = igra.poteza(stolpec)
+        self.igre[id_igre] = (igra, poteza)
+
