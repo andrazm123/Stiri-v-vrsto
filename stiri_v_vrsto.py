@@ -20,12 +20,12 @@ def zacni_novo_igro():
 def prikazi_igro():
     id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNI_KLJUC)
     (igra, poteza) = stiri_v_vrsto.igre[id_igre]
-    return bottle.template('views/igre.tpl', igra=igra, id_igre=id_igre, poteza=poteza)
+    return bottle.template('views/igra.tpl', igra=igra, id_igre=id_igre, poteza=poteza)
 
 #Če imaš post metodo VEDNO nato redirectaj na GET
 @bottle.post('/igra/')
 def ugibaj_crko():
-    stolpec = bottle.request.forms.getunicode("poskus")
+    stolpec = int(bottle.request.forms.getunicode("poskus"))
     id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNI_KLJUC)
     stiri_v_vrsto.poteza(id_igre, stolpec)
     bottle.redirect('/igra/')
