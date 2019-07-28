@@ -25,4 +25,25 @@
         </td>
     </tr>
     % end
+</table>
+
+
+<div>
+  <table>
+    % for vrstica in range(model.VRSTICE):
+      <tr>
+        % for stolpec in range(model.STOLPCI):
+        <td>
+          % if igra.tabela[vrstica][stolpec] == 0:
+            0
+          % elif igra.tabela[vrstica][stolpec] == -1:
+            -1
+          % else:
+            3
+          % end
+        </td>
+        % end
+      </tr>
+    % end     
   </table>
+</div>
