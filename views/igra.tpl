@@ -35,11 +35,11 @@
         % for stolpec in range(model.STOLPCI):
         <td>
           % if igra.tabela[vrstica][stolpec] == 0:
-            <img src="/static/images/Bel.jpg" alt="ERROR">
+            <img src="/static/Bel.jpg" /> 
           % elif igra.tabela[vrstica][stolpec] == -1:
-            <img src="/static/images/Rumen.jpg" alt="ERROR">
+            <img src="/static/Rumen.jpg" />
           % else:
-            <img src="/static/images/Rdec.jpg" alt="ERROR">
+            <img src="/static/Rdec.jpg" />
           % end
         </td>
         % end
