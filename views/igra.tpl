@@ -28,18 +28,18 @@
 </table>
 
 
-<div>
-  <table>
+<div align="center">
+  <table cellpadding="0" cellspacing="0" width="60%" border-spacing="0">
     % for vrstica in range(model.VRSTICE):
       <tr>
         % for stolpec in range(model.STOLPCI):
         <td>
           % if igra.tabela[vrstica][stolpec] == 0:
-            <img src="/static/Bel.jpg" /> 
+            <img src="/static/Bel.jpg" width="100%"  /> 
           % elif igra.tabela[vrstica][stolpec] == -1:
-            <img src="/static/Rumen.jpg" />
+            <img src="/static/Rumen.jpg" width="100%"  />
           % else:
-            <img src="/static/Rdec.jpg" />
+            <img src="/static/Rdec.jpg" width="100%"  />
           % end
         </td>
         % end
