@@ -8,18 +8,22 @@
 
 
   <style>
-    h1{
-      color: red;
+    div{
+      margin-bottom: 30px;
+      margin-top: 10px;
     }
-    table{
-      border-width: 2px 2px 2px 2px;
-      border-color: blue;
+    td {
+    line-height: 0
+    }
+    .plosca{
+      border-width: 0px 0px 40px 0px;
+      border-color: #24305e;
       border-style: solid;
-    }
+    }  
   </style>
 
 
-  <body bgcolor="#E6E6FA" text="blue">
+  <body background="/static/Ozadje.jpg">
     {{!base}}
   </body>
 
