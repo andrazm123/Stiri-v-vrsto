@@ -15,14 +15,6 @@
   % end
 </div>
 
-<div align="center">
-  <table width="20%"><tr> 
-    <td><img src="/static/Igr.png" width="45%"  /></td>
-    <td><h1>YOU</h1></td>
-    <td><img src="/static/Rac.png" width="45%"  /></td>
-    <td><h1>COM</h1></td>
-  </tr></table>
-</div>
 
 <div align="center">
   <table cellpadding="0" cellspacing="0" width="40%" class="plosca">
@@ -43,3 +35,21 @@
     % end
   </table>
 </div>
+
+<div align="center" class="oznake">
+    <table width="40%"><tr> 
+      <td class="legenda" width="10%">
+        <img src="/static/Igr.png" width="100%"  id="slika1"/>
+      </td>
+      <td width="23,3%">
+        <p id="naslov1">YOU</p>
+      </td>
+      <td width="33,3%">123</td>
+      <td width="23,3%"> 
+          <h1 id="naslov2">COM</h1>
+      </td>
+      <td class="legenda" width="10%">
+        <img src="/static/Rac.png" width="100%"  id="slika2"/>
+      </td>
+    </tr></table>
+  </div>

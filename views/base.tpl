@@ -8,18 +8,37 @@
 
 
   <style>
+    h1{
+      font-size: 50%;
+    }
     div{
-      margin-bottom: 30px;
+      margin-bottom: 0px;
       margin-top: 10px;
     }
     td {
-    line-height: 0
+      line-height: 0px;
     }
     .plosca{
-      border-width: 0px 0px 40px 0px;
+      border-width: 0% 0% 50% 0%;
       border-color: #24305e;
       border-style: solid;
-    }  
+    }
+    .oznake{
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    #slika1{
+      float: left;
+    }
+    #slika2{
+      float: right;
+    }
+    #naslov1{
+      text-align: left;
+    }
+    #naslov2{
+      text-align: right;
+    }
   </style>
 
 
