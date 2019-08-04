@@ -17,7 +17,7 @@
 
 
 <div align="center">
-  <table cellpadding="0" cellspacing="0" width="40%" class="plosca">
+  <table cellpadding="0" cellspacing="0" class="plosca">
     % for vrstica in range(model.VRSTICE):
       <tr valign="middel">
         % for stolpec in range(model.STOLPCI):
@@ -36,20 +36,15 @@
   </table>
 </div>
 
-<div align="center" class="oznake">
-    <table width="40%"><tr> 
-      <td class="legenda" width="10%">
-        <img src="/static/Igr.png" width="100%"  id="slika1"/>
-      </td>
-      <td width="23,3%">
-        <p id="naslov1">YOU</p>
-      </td>
-      <td width="33,3%">123</td>
-      <td width="23,3%"> 
-          <h1 id="naslov2">COM</h1>
-      </td>
-      <td class="legenda" width="10%">
-        <img src="/static/Rac.png" width="100%"  id="slika2"/>
-      </td>
-    </tr></table>
-  </div>
+<div id="s1">
+    <img src="/static/Igr.png" class="slika"/>
+</div>
+<div id="s2">
+    <h1>You</h1>
+</div>
+<div id="s3">
+    <h1>Com</h1>
+</div>
+<div id="s4">
+    <img src="/static/Rac.png" class="slika"/>
+</div>

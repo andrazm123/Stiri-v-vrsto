@@ -3,10 +3,12 @@ import bottle, model
 stiri_v_vrsto = model.Stiri_v_vrsto()
 SKRIVNI_KLJUC = "bravo, uganil si kluc"
 
+#ZAČETNA STRAN
 @bottle.get('/')
 def prva_stran():
     return bottle.template('views/index.tpl')
 
+#GUMB-NOVA IGRA
 @bottle.post('/nova_igra/')
 def zacni_novo_igro():
     # POST naredi novo igro, reusmeri na naslov za igranje te nove igre
@@ -15,6 +17,7 @@ def zacni_novo_igro():
     bottle.redirect('/igra/')
     return
 
+#IGRA SAMA
 #Moramo preusmeruti na GET ker bi drugače ob osvežitvi vse izgubili
 @bottle.get('/igra/')
 def prikazi_igro():
@@ -22,6 +25,7 @@ def prikazi_igro():
     (igra, poteza) = stiri_v_vrsto.igre[id_igre]
     return bottle.template('views/igra.tpl', igra=igra, id_igre=id_igre, poteza=poteza)
 
+#GUMB-UGIBAJ
 #Če imaš post metodo VEDNO nato redirectaj na GET
 @bottle.post('/igra/')
 def ugibaj_crko():
