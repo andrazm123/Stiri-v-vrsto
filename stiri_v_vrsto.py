@@ -25,17 +25,13 @@ def prikazi_igro():
     (igra, poteza) = stiri_v_vrsto.igre[id_igre]
     return bottle.template('views/igra.tpl', igra=igra, id_igre=id_igre, poteza=poteza)
 
-#GUMB-UGIBAJ
-#Če imaš post metodo VEDNO nato redirectaj na GET
-@bottle.post('/igra/')
-def ugibaj_crko():
-    stolpec = int(bottle.request.forms.getunicode("poskus"))
+#GUMBI ZA UGIBATI
+@bottle.post("/ugibaj/<n:int>")
+def ugibaj(n):
+    stolpec = n
     id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNI_KLJUC)
     stiri_v_vrsto.poteza(id_igre, stolpec)
     bottle.redirect('/igra/')
-
-
-
 
 
 

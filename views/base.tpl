@@ -16,6 +16,14 @@
       margin: auto;
       background-image: url("/static/Ozadje.jpg");
     }
+    .gumbi{
+      border-spacing: 0;
+      margin-top: 4vw;
+    }
+    .gumbi td{
+      line-height: 0;
+      padding: 0;
+    }
     .plosca{
       border-width: 0 0 2vw 0;
       border-color: #24305e;
@@ -24,7 +32,7 @@
       border-spacing: 0;
     }
     .plosca td{
-      line-height: 0px;
+      line-height: 0;
       padding: 0;
     }
     #s1{
