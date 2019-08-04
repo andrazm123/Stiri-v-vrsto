@@ -5,6 +5,7 @@
   <head>
     <title>Vislice</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Andraž Maier">
   </head>
 
@@ -20,9 +21,11 @@
       border-color: #24305e;
       border-style: solid;
       margin-bottom: 0.5vw;
+      border-spacing: 0;
     }
     .plosca td{
       line-height: 0px;
+      padding: 0;
     }
     #s1{
       float: left;
@@ -43,7 +46,7 @@
     .slika{
       width: 80%;
     }
-    h1{
+    .ime{
       font-family: Arial, Helvetica, sans-serif;
       font-size: 1.3vw;
       color: #24305e;
@@ -53,10 +56,8 @@
     }
   </style>
 
-
   <body >
     {{!base}}
   </body>
-
 
 </html>

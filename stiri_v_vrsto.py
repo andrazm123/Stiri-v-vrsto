@@ -34,6 +34,11 @@ def ugibaj_crko():
     stiri_v_vrsto.poteza(id_igre, stolpec)
     bottle.redirect('/igra/')
 
+
+
+
+
+
 @bottle.get("/static/<filename>")
 def server_static(filename):
     return bottle.static_file(filename, root="./images")

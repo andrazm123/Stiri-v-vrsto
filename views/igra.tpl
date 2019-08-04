@@ -17,7 +17,7 @@
 
 
 <div align="center">
-  <table cellpadding="0" cellspacing="0" class="plosca">
+  <table class="plosca">
     % for vrstica in range(model.VRSTICE):
       <tr valign="middel">
         % for stolpec in range(model.STOLPCI):
@@ -40,11 +40,12 @@
     <img src="/static/Igr.png" class="slika"/>
 </div>
 <div id="s2">
-    <h1>You</h1>
+    <h1 class="ime">You</h1>
 </div>
 <div id="s3">
-    <h1>Com</h1>
+    <h1 class="ime">Com</h1>
 </div>
 <div id="s4">
     <img src="/static/Rac.png" class="slika"/>
 </div>
+
