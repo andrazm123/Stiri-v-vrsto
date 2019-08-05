@@ -42,6 +42,7 @@
     }
     .gumb:hover{
       background: #f76c6c;
+      color: #24305e;
     }
     .plosca{
       border-spacing: 0;
@@ -104,6 +105,32 @@
       text-transform: uppercase;
       margin-top: 2vw;
     }
+    .naslov{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 3vw;
+      color: #24305e;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top:  15vw;
+      margin-bottom: 5vw;
+      text-align: center;
+    }
+    .gumb_nas{
+      width: 100%;
+      height: 3vw;
+      font-size: 2vw;
+      border: 0;
+      background: #24305e;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #c1d9e6;
+    }
+    .gumb_nas:hover{
+      background: #f76c6c;
+      color: #24305e;
+    }
+
   </style>
 
   <body >

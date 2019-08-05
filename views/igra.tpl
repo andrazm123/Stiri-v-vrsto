@@ -3,23 +3,23 @@
 
 
 <div class="zgoraj">
-  % if poteza == model.IG or poteza == model.RAC:
-    <form action="/nova_igra/" method="post">
-      <button class="gumb" type="submit">New game</button>
-    </form>
-  % else:
   <table class="gumbi">
-    <tr>
-      % for i in range(model.STOLPCI):
-        <td>
-          <form action="/ugibaj/{{i}}" method="post">
-            <button class="gumb" type="submit">{{i + 1}}</button>
-          </form>
-        </td>
-      % end
-    </tr>
+    % if poteza == model.IG:
+      <tr><td id="zmagal"><h1 class="opis">You won!</h1></td></tr>
+    % elif poteza == model.RAC:
+      <tr><td id="izgubil"><h1 class="opis">You lost!</h1></td></tr>
+    % else:
+      <tr>
+        % for i in range(model.STOLPCI):
+          <td>
+            <form action="/ugibaj/{{i}}" method="post">
+              <button class="gumb" type="submit">{{i + 1}}</button>
+            </form>
+          </td>
+        % end
+      </tr>
+    % end
   </table>
-  % end
 </div>
 
 
@@ -46,10 +46,12 @@
 <div>
   <table class="reset">
     <tr>
-      % if poteza == model.IG:
-        <td id="zmagal"><h1 class="opis">You won!</h1></td>
-      % elif poteza == model.RAC:
-        <td id="izgubil"><h1 class="opis">You lost!</h1></td>
+      % if poteza == model.IG or poteza == model.RAC:
+        <td></td>
+          <form action="/nova_igra/" method="post">
+            <button class="gumb" type="submit">New game</button>
+          </form>
+        </td>
       % else:
         <td>
           <form action="/nova_igra/" method="post">
