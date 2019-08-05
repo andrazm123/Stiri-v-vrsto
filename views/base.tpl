@@ -1,3 +1,5 @@
+% import model
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -16,24 +18,64 @@
       margin: auto;
       background-image: url("/static/Ozadje.jpg");
     }
+    .zgoraj{
+      margin-top: 4vw;
+    }
     .gumbi{
       border-spacing: 0;
-      margin-top: 4vw;
+      width: 100%;
     }
     .gumbi td{
       line-height: 0;
       padding: 0;
     }
+    .gumb{
+      width: 100%;
+      height: 2vw;
+      font-size: 1vw;
+      border: 0;
+      background: #24305e;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #c1d9e6;
+    }
+    .gumb:hover{
+      background: #f76c6c;
+    }
     .plosca{
-      border-width: 0 0 2vw 0;
-      border-color: #24305e;
-      border-style: solid;
-      margin-bottom: 0.5vw;
       border-spacing: 0;
     }
     .plosca td{
       line-height: 0;
       padding: 0;
+    }
+    .reset{
+      border-spacing: 0;
+      width: 100%;
+    }
+    .reset td{
+      line-height: 0;
+      padding: 0;
+    }
+    #zmagal{
+      height: 2vw;
+      font-size: 1vw;
+      background: #f76c6c;
+      text-align: center;
+    }
+    #izgubil{
+      height: 2vw;
+      font-size: 1vw;
+      background: #f8e9a1;
+      text-align: center;
+    }
+    .opis{
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #24305e;
+      font-size: 1vw;
     }
     #s1{
       float: left;

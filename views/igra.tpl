@@ -2,18 +2,18 @@
 % import model
 
 
-<div class="polje">
+<div class="zgoraj">
   % if poteza == model.IG or poteza == model.RAC:
     <form action="/nova_igra/" method="post">
-      <button type="submit">Nova igra</button>
+      <button class="gumb" type="submit">New game</button>
     </form>
   % else:
   <table class="gumbi">
     <tr>
       % for i in range(model.STOLPCI):
         <td>
-          <form class="poteza" action="/ugibaj/{{i}}" method="post">
-            <button type="submit">{{i + 1}}</button>
+          <form action="/ugibaj/{{i}}" method="post">
+            <button class="gumb" type="submit">{{i + 1}}</button>
           </form>
         </td>
       % end
@@ -23,7 +23,7 @@
 </div>
 
 
-<div class="polje">
+<div>
   <table class="plosca">
     % for vrstica in range(model.VRSTICE):
       <tr valign="middel">
@@ -40,6 +40,24 @@
         % end
       </tr>
     % end
+  </table>
+</div>
+
+<div>
+  <table class="reset">
+    <tr>
+      % if poteza == model.IG:
+        <td id="zmagal"><h1 class="opis">You won!</h1></td>
+      % elif poteza == model.RAC:
+        <td id="izgubil"><h1 class="opis">You lost!</h1></td>
+      % else:
+        <td>
+          <form action="/nova_igra/" method="post">
+            <button class="gumb" type="submit">Reset</button>
+          </form>
+        </td>
+      % end
+    </tr>
   </table>
 </div>
 
