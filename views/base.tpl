@@ -1,5 +1,3 @@
-% import model
-
 <!DOCTYPE html>
 <html lang="en">
   
