@@ -76,6 +76,18 @@
       color: #24305e;
       font-size: 1vw;
     }
+    .napaka{
+      width: 100%;
+      height: 2vw;
+      background: #24305e;
+      text-align: center;
+      font-size: 1vw;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #c1d9e6;
+      margin: auto;
+    }
     #s1{
       float: left;
       width: 15%;

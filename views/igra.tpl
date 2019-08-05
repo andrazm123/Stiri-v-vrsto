@@ -47,11 +47,19 @@
     <table class="reset">
       <tr>
         % if poteza == model.IG or poteza == model.RAC:
-          <td></td>
+          <td>
             <form action="/nova_igra/" method="post">
               <button class="gumb" type="submit">New game</button>
             </form>
           </td>
+        % elif poteza == model.NAPAKA:
+        <td class="napaka">         
+          <h1>Incorrect move!!!</h1>
+        </td>
+        % elif poteza == model.REMI:
+        <td>
+          234
+        </td>
         % else:
           <td>
             <form action="/nova_igra/" method="post">

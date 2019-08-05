@@ -1,13 +1,16 @@
 import copy
 import random
 
+#Nujno mora biti vsaj en od STOLPCI ali VRSTICE sod. 
 STOLPCI = 7
 VRSTICE = 6
 PRAZNO = 0
 IG = 3
 RAC = -1
 VEKTORJI = {(0, 1), (1, 1), (1, 0), (1, -1)} # Y SMER JE RAVNO OBRATNA
-ZAČETEK = "z"
+ZAČETEK = "zmaga"
+REMI = "remi"
+NAPAKA = "napaka"
 
 
 class Igra:
@@ -57,24 +60,35 @@ class Igra:
             return PRAZNO
     
     def zmaga(self):
+        remi_test = True
         for vrstica in range(VRSTICE):
             for stolpec in range(STOLPCI):
+                if self.tabela[vrstica][stolpec] == PRAZNO:
+                    remi_test = False
                 if self.stiri_okolica(vrstica, stolpec) == IG:
                     return IG
                 elif self.stiri_okolica(vrstica, stolpec) == RAC:
                     return RAC
-        return PRAZNO
+        if remi_test:
+            return REMI
+        else:
+            return PRAZNO
     
-    def poteza(self, stolpec):
+    def poteza(self, stolpec): #igralca
         if self.igralec == RAC:
-            self.tabela[5][3] = RAC
+            self.tabela[VRSTICE - 1][(STOLPCI - 1) // 2] = RAC
             self.igralec = IG
+        prostor_test = True
         for vrstica in range(VRSTICE - 1, -1, -1):
             if self.tabela[vrstica][stolpec] == PRAZNO:
                 self.tabela[vrstica][stolpec] = IG
+                prostor_test = False
                 break
-        if self.zmaga() == IG:
-            return IG
+        if prostor_test:
+            return NAPAKA
+        rezultat = self.zmaga()
+        if rezultat == IG or rezultat == REMI:
+            return rezultat
         else:
             self.poteza_racunalnik()
             return self.zmaga()
@@ -127,7 +141,7 @@ class Stiri_v_vrsto:
                     return i
     
     def nova_igra(self):
-        # Naredi novo igro z naključnim geslom in shrani v slovar z novim ID, shrani (začetek, igra)
+        # Naredi novo igro in shrani v slovar z novim ID, shrani (začetek, igra)
         igra = nova_igra()
         nov_id = self.prost_id_igre()
         self.igre[nov_id] = (igra, ZAČETEK)
