@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+#Moje omejitve:
+#Bil je samo za boljšo predstavo v začetni fazi, a si ne zasluži biti v githubu.
+tekstovni_vmesnik.py
