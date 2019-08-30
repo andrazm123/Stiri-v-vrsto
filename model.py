@@ -11,7 +11,7 @@ VRSTICE = 6
 PRAZNO = "Prazno"
 IG = "Igralec"
 RAC = "Racunalnik"
-ZAČETEK = "Zmaga"
+ZAČETEK = "Začetek"
 REMI = "Remi"
 NAPAKA = "Napaka"
 TEZKO = "Tezko"
@@ -36,6 +36,7 @@ class Igra:
         self.tabela = tabela
         if self.igralec == RAC:
             self.tabela[VRSTICE - 1][(STOLPCI - 1) // 2] = RAC
+            self.igralec = IG
 
 
     # TEST ZMAGE AND RACUN POTENCJALA
