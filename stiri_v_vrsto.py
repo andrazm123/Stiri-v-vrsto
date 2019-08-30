@@ -1,6 +1,6 @@
 import bottle, model
 
-stiri_v_vrsto = model.Stiri_v_vrsto()
+stiri_v_vrsto = model.Stiri_v_vrsto("stanje.json")
 SKRIVNI_KLJUC = "bravo, uganil si kluc"
 
 
@@ -54,6 +54,7 @@ def ugibaj(n):
     id_igre = bottle.request.get_cookie("id_igre", secret=SKRIVNI_KLJUC)
     stiri_v_vrsto.poteza(id_igre, stolpec)
     bottle.redirect('/igra/')
+    return
 
 
 #SKLIKE

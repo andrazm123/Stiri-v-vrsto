@@ -283,6 +283,7 @@ class Stiri_v_vrsto:
         # V slovarju igre ima vsaka igra svoj celoštevilski id.
         self.datoteka_s_stanjem = datoteka_s_stanjem
         self.igre = {}
+        
 
     def prost_id_igre(self):
         if self.igre == {}:
@@ -293,17 +294,24 @@ class Stiri_v_vrsto:
                 if i not in self.igre.keys():
                     return i
     
+
     def nova_igra(self, igralec=IG, tezavnost=TEZKO):
         # Naredi novo igro in shrani v slovar z novim ID, shrani (začetek, igra)
+        self.nalozi_igre_iz_datoteke()
         igra = Igra(igralec=igralec, tezavnost=tezavnost)
         nov_id = self.prost_id_igre()
         self.igre[nov_id] = (igra, ZAČETEK)
+        self.zapisi_igre_v_datoteko()
         return nov_id
 
+
     def poteza(self, id_igre, stolpec):
+        self.nalozi_igre_iz_datoteke()
         (igra, _) = self.igre[id_igre]
         poteza = igra.poteza(stolpec)
         self.igre[id_igre] = (igra, poteza)
+        self.zapisi_igre_v_datoteko()
+        return
 
 
     def nalozi_igre_iz_datoteke(self):
@@ -312,9 +320,10 @@ class Stiri_v_vrsto:
             igre = {}
             for id_igre in zakodirane_igre:
                 igra = zakodirane_igre[id_igre]
-                igre[int(id_igre)] = (Igra(tabela=igra["tabela"], igralec=igra["igralec"], tezavnost=igra["tezavnost"]), igra["poskus"])
+                igre[int(id_igre)] = (Igra(tabela=igra["tabela"], igralec=igra["igralec"], tezavnost=igra["tezavnost"]), igra["poteza"])
             self.igre = igre
-        
+        return
+
 
     def zapisi_igre_v_datoteko(self):
         with open(self.datoteka_s_stanjem, "w") as datoteka:
@@ -323,7 +332,7 @@ class Stiri_v_vrsto:
                 (igra, poteza) = self.igre[id_igre]
                 zakodirane_igre[id_igre] = {"igralec": igra.igralec, "tezavnost": igra.tezavnost, "tabela": igra.tabela, "poteza": poteza}
             json.dump(zakodirane_igre, datoteka)
-
+        return
 
 
 
