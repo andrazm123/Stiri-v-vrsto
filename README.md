@@ -9,4 +9,5 @@ Mentor: **prof. Matija Pretnar**
 
 * **KOMENTAR:** Mislim, da mi je cilje uspelo doseči, saj aplikacija deluje zelo zadovoljivo. Dodal pa bi nekaj predpostavk, čeprav se igra štiri v vrsto na standardni tabeli velikosti 6x7, program omogoča nastaviti poljubne vrednosti števila stolpcev in vrstic. Ob tem pa je potrebno upoštevati, da mora imeti plošča sodo število polj, saj je drugače nepoštena, in da morata biti dimenziji plošče vsaj 4, saj igramo štiri v vrsto. Poleg tega bi želel izpostaviti, da nikoli ni bil cilj, da bi bil računalnik nepremagljiv.
 
-* **MOŽNOSTI IZBOLJŠAVE:** Možnosti so, da bi imel vsak igralec account, tako bi lahko dodal statistiko, nagrade, izive in podobno.
+* **MOŽNOSTI IZBOLJŠAVE:** Možnosti so, da bi imel vsak igralec račun, tako bi lahko dodal statistiko, nagrade, izive in podobno.
+
