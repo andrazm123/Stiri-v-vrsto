@@ -1,5 +1,6 @@
 import copy
 import random
+import json
 
 
 # "Spremeljive" količine, a z omejitvami.
@@ -29,10 +30,10 @@ if not(isinstance(IG, str) == isinstance(RAC, str) == isinstance(LAHKO, str) == 
 
 class Igra:
 
-    def __init__(self, tezavnost=TEZKO, igralec=IG):
+    def __init__(self, tabela=[[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)], tezavnost=TEZKO, igralec=IG):
         self.igralec = igralec
         self.tezavnost = tezavnost
-        self.tabela = [[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)]
+        self.tabela = tabela
         if self.igralec == RAC:
             self.tabela[VRSTICE - 1][(STOLPCI - 1) // 2] = RAC
 
@@ -277,8 +278,9 @@ class Igra:
 
 class Stiri_v_vrsto:
 
-    def __init__(self):
+    def __init__(self, datoteka_s_stanjem):
         # V slovarju igre ima vsaka igra svoj celoštevilski id.
+        self.datoteka_s_stanjem = datoteka_s_stanjem
         self.igre = {}
 
     def prost_id_igre(self):
@@ -301,6 +303,28 @@ class Stiri_v_vrsto:
         (igra, _) = self.igre[id_igre]
         poteza = igra.poteza(stolpec)
         self.igre[id_igre] = (igra, poteza)
+
+
+    def nalozi_igre_iz_datoteke(self):
+        with open(self.datoteka_s_stanjem) as datoteka:
+            zakodirane_igre = json.load(datoteka) #Dobimo slovar z (geslom, crke)
+            igre = {}
+            for id_igre in zakodirane_igre:
+                igra = zakodirane_igre[id_igre]
+                igre[int(id_igre)] = (Igra(tabela=igra["tabela"], igralec=igra["igralec"], tezavnost=igra["tezavnost"]), igra["poskus"])
+            self.igre = igre
+        
+
+    def zapisi_igre_v_datoteko(self):
+        with open(self.datoteka_s_stanjem, "w") as datoteka:
+            zakodirane_igre = {}
+            for id_igre in self.igre:
+                (igra, poteza) = self.igre[id_igre]
+                zakodirane_igre[id_igre] = {"igralec": igra.igralec, "tezavnost": igra.tezavnost, "tabela": igra.tabela, "poteza": poteza}
+            json.dump(zakodirane_igre, datoteka)
+
+
+
 
 
 
