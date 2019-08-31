@@ -250,8 +250,7 @@ class Igra:
                 self.tabela = Igra.poteza_na_stolpec(IG, self.tabela, stolpec)
                 rezultat = self.zmaga()
                 self.igralec = DVA_IGRALCA_2
-                if rezultat == IG or rezultat == REMI:
-                    return rezultat
+                return rezultat
         elif self.igralec == DVA_IGRALCA_2:
             tabela = copy.deepcopy(self.tabela)
             if not Igra.mogoca_poteza(tabela, stolpec):
@@ -260,8 +259,7 @@ class Igra:
                 self.tabela = Igra.poteza_na_stolpec(RAC, self.tabela, stolpec)
                 rezultat = self.zmaga()
                 self.igralec = DVA_IGRALCA_1
-                if rezultat == RAC or rezultat == REMI:
-                    return rezultat
+                return rezultat
         else:
             assert False, "Do sem se nebi smelo dati priti."
 
@@ -298,7 +296,7 @@ class Stiri_v_vrsto:
     def nova_igra(self, igralec=IG, tezavnost=TEZKO):
         # Naredi novo igro in shrani v slovar z novim ID, shrani (začetek, igra)
         self.nalozi_igre_iz_datoteke()
-        igra = Igra(igralec=igralec, tezavnost=tezavnost)
+        igra = Igra(igralec=igralec, tezavnost=tezavnost, tabela=[[PRAZNO for _ in range(STOLPCI)] for _ in range(VRSTICE)])
         nov_id = self.prost_id_igre()
         self.igre[nov_id] = (igra, ZAČETEK)
         self.zapisi_igre_v_datoteko()
