@@ -4,7 +4,6 @@
 <section>
   <div class="naslovnica">
     <h1 class="naslov">Four in a row</h1>
-
     <form action="/nova_igra/{{model.IG}}/{{model.TEZKO}}" method="post">
       <button class="gumb_nas" type="submit">Hard</button>
     </form>

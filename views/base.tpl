@@ -178,11 +178,12 @@
     .gumb_nas_r:active{
       outline: none;
     }
-
   </style>
+
 
   <body >
     {{!base}}
   </body>
+
 
 </html>
